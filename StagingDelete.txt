@@ -1,0 +1,5 @@
+aws ec2 --profile ACME create-tags --resources i-asdfasdfasdf i-12342341234 i-fghj56uyfhg6 --tags Key="STAGE",Value="OFF"
+
+aws ec2 --profile ACME create-tags --resources i-asdfasdfasdf i-12342341234 i-fghj56uyfhg6 --tags Key="DeleteSoon",Value="YES"
+
+aws ec2 describe-instances --profile ACME --instance-ids i-asdfasdfasdf i-12342341234 i-fghj56uyfhg6 --query 'Reservations[*].Instances[*].{State:State.Name}' --output text | grep -E 'running|stopped'

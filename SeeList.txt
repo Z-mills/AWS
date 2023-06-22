@@ -1,0 +1,2 @@
+aws ec2 describe-instances --profile ACME--query 'Reservations[*].Instances[*].[InstanceId,Tags[?Key==`Name`]|[0].Value,Tags[?Key==`STAGE`]|[0].Value,InstanceType,Tags[?Key==`USER`]|[0].Value]' \
+--output text | tr -s '[:blank:]' ',' > ~/instanceswin.csv
